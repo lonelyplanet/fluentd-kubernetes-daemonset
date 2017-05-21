@@ -13,12 +13,14 @@
    host "#{ENV['FLUENT_ELASTICSEARCH_HOST']}"
    port "#{ENV['FLUENT_ELASTICSEARCH_PORT']}"
    logstash_format true
-   buffer_chunk_limit 2M
-   buffer_queue_limit 32
+   buffer_chunk_limit 10M
+   buffer_queue_limit 8192
    flush_interval 5s
    max_retry_wait 30
    disable_retry_limit
+   reconnect_on_error true
    num_threads 8
+   reload_connections false
 </match>
 <%  when "logentries"%>
 <match **>
